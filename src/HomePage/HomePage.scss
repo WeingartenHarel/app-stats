@@ -37,10 +37,15 @@ body{
 // }
 
 #tsparticles{
-  z-index: 99;
+  z-index: 106;
   position: absolute;
   bottom: 0px;
   left: 0;
+  width: 400px;
+  height: 400px;
+  margin: -200px;
+  top: 50%;
+  left: 50%;
   // background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--primary) 60% , var(--primary) 67%);
 
 }
@@ -94,7 +99,7 @@ nav{
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      
+
       input{
         border: 1px solid var(--primary);
         width: 90px;
@@ -180,14 +185,7 @@ nav{
       box-sizing: border-box;
     }
     
-    .container {
-      position: relative;
-      align-items: center;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-
-    }
+   
 
     .animationStatsContainer{
       // visibility: hidden;
@@ -214,6 +212,16 @@ nav{
     }
 
     .shapeContainer{
+      .container {
+        position: relative;
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+     
+
+    
+
       .shape {
         position: relative;
         display: flex;
@@ -227,7 +235,9 @@ nav{
         background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--primary) 60% , var(--primary) 67%);
         // background-color: var(--primary);
 
-        animation: morph 4s ease-in-out infinite;
+        //animation: morph 8s ease-in-out infinite;
+        //animation: skewing 4s ease-in-out infinite;
+        animation: skewing-child .2s ease-in-out infinite alternate;
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         
         transition: all 1s ease-in-out;
@@ -253,17 +263,7 @@ nav{
         }
 
         
-        .notification{
-          position: absolute;
-          z-index: 122;
-          color: white;
-          top: -40px;
-          right: -40px;
-          background: var(--primary);
-          padding: 10px;
-          border-radius: 50px;
-          min-width: 60px;
-        }
+       
       }
 
       .shape:hover {
@@ -276,6 +276,79 @@ nav{
         background: var(--third)
 
       }
+
+
+      .notification{
+        position: relative;
+        z-index: 122;
+        color: white;
+        top: -250px;
+        right: -250px;
+        background: var(--primary);
+        padding: 10px;
+        border-radius: 50px;
+        min-width: 60px;
+        min-height: 60px;
+        padding: 16px 10px;
+        font-size: 1.2em;
+      }
+
+      .wrapper {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: 50%;
+        left: 50%;
+        margin: -250px;
+        background:#fbfbfb08;
+        filter:blur(10px) contrast(15);
+      
+       
+
+        span {
+          background:  var(--primary);
+          background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--primary) 60% , var(--primary) 67%);
+
+          position: absolute;
+          border-radius: 50%;
+          display: inline-block;
+        }
+        
+        p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+        }
+        
+        p:nth-child(1) {
+          position: absolute;
+          animation: skewing-child 1.6s ease-in-out infinite alternate;
+          
+          span { 
+            width: 400px;
+            height: 400px;
+            margin: -205px;
+            // animation: moving 2s cubic-bezier(.97,.01,.12,.99) infinite alternate;
+          }
+        }
+        
+        p:nth-child(2) {
+          position: absolute;
+          animation: squishing 6s ease-in-out infinite alternate;
+          
+          span {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            margin: -210px;
+            animation: skewing 6s 6.5s ease-in-out infinite;
+          }
+        } 
+      }
+
+
+     
 
       .shapeText{
         display: flex;
@@ -295,53 +368,82 @@ nav{
       }
     }
 
-    .shapeWhite{
-      background: #fff !important;
-      height: 350px !important;
-      width: 350px !important;
-      position: absolute;
-      z-index: 99 !important;  
-    }
+    // .shapeWhite{
+    //   background: #fff !important;
+    //   height: 350px !important;
+    //   width: 350px !important;
+    //   position: absolute;
+    //   z-index: 99 !important;  
+    // }
    
     .innerShape{
       background: #222;
-  color: white;
-  padding: 2rem;
+      color: white;
+      padding: 2rem;
     }
 
-    @keyframes morph {
-      0% {
-          border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
-          // background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--primary) 60% , var(--secondary) 67%);
-          // background-color: var(--primary);
-        } 
-        
-      
-      
-
-        50% {
-          border-radius:  30% 60% 70% 40% / 50% 60% 30% 60%;
-          // background-color: var(--secondary);
-        }
-      
-
-     
-      
-        100% {
-          border-radius:  60% 40% 30% 70% / 60% 30% 70% 40%;
-          // background-color: var(--primary);
-
-        } 
+    // css animations     
+    @keyframes skewing {
+      0% { transform: skewX(6deg); }
+      10% { transform: skewX(-6deg); }
+      20% { transform: skewX(4deg); }
+      30% { transform: skewX(-4deg); }
+      40% { transform: skewX(2deg); }
+      50% { transform: skewX(-6deg); }
+      55% { transform: skewX(6deg); }
+      60% { transform: skewX(-5deg); }
+      65% { transform: skewX(5deg); }
+      70% { transform: skewX(-4deg); }
+      75% { transform: skewX(4deg); }
+      80% { transform: skewX(-3deg); } 
+      85% { transform: skewX(3deg); }
+      90% { transform: skewX(-2deg); } 
+      95% { transform: skewX(2deg); }
+      100%   { transform: skewX(6deg); }
     }
-    .hidden{
+    
+    @keyframes skewing-child {
+      0%      { transform: skewX(-10deg); }
+      100%     { transform: skewX(10deg); }
+    }
+    
+    @keyframes moving {
+      0% {transform: translate(-200px);}
+      30% {transform: translate(-45px);} 
+      70% {transform: translate(45px);}
+      100% {transform: translate(200px);}
+    }
+    
+    @keyframes squishing {
+      10%, 40%, 80% { transform: scale(1, .9); }
+      0%, 30%, 60%, 100% {transform: scale(.9, 1);}
+    }
+
+    .stop-animation{
       animation: morph 0s ease-in-out !important;
+      animation: skewing-child 0s ease-in-out 1 alternate !important;;
+      animation: squishing 0s ease-in-out 1 alternate !important;;
+      animation: skewing 0s 0s ease-in-out 1 !important;;
       transition: all 0s ease-in-out;
     }
+  }// end of container
 
-}
-.shape:hover ~ .animationStatsContainer{
+}// end of shapeContainer
+#tsparticles:hover ~ .animationStatsContainer{
   // visibility: visible;
   opacity: 1;
+}
+
+
+#tsparticles:hover ~ .wrapper p span{
+  background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--third) 60% , var(--third) 67%);
+  // background: radial-gradient(circle, rgba(9, 9, 121, 0) 10%, rgba(9, 9, 121, 0) 50% , var(--primary) 60% , var(--primary) 67%);
+
+  // border-color:var(--third);
+}
+
+#tsparticles:hover ~ .wrapper .notification{
+  background: var(--third)
 }
 
 .hideMenu{

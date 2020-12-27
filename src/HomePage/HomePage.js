@@ -9,10 +9,17 @@ import Particles from 'react-particles-js';
 
 
 export class HomePage extends React.Component {
+
+  // constructor(props) {
+  //   super(props);
+  //   // this.myRefStats = React.createRef();
+
+  // }
+
   state = {
     // active: false,  
     isBoxVisible: true,
-    color: '#ff0000',
+    color: '#58beff',
     score: 58,
     text: 'Your Score',
     counter: 0,
@@ -82,13 +89,12 @@ export class HomePage extends React.Component {
 
     // update animation
     this.changeAnimationColor(value);
-    this.restratAnimation(value);
-
-
   }
 
   changeAnimationColor(value) {
     document.documentElement.style.setProperty("--primary", value);
+    this.restratAnimation(value);
+
   }
 
   restratAnimation(value) {
@@ -113,6 +119,10 @@ export class HomePage extends React.Component {
     return JSON.parse(val)
   }
 
+  shapeHover(){
+    //document.querySelector("animationStatsContainer").opacity = 1
+  }
+
   render() {
     const { isBoxVisible, score, color, text, counter, isMenuVisible, actions } = this.state;
 
@@ -122,9 +132,9 @@ export class HomePage extends React.Component {
 
         {/* <div className="videoBG"><iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/DGQwd1_dpuc?controls=0" frameBorder="0" allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> </div> */}
 
-        <div >
+        {/* <div >
           HomePage Component
-        </div>
+        </div> */}
 
         <div className="actionList">
           <h4>Action List</h4>
@@ -152,13 +162,7 @@ export class HomePage extends React.Component {
         {/* <h4>shape goes here</h4> */}
         <div className="shapeContainer">
           <div className="container">
-
-            {/* style={{background:`linear-gradient(45deg, var(--primary) 0%, ${color} 100%)  `}} */}
-            {/* <div className={`shape shapeWhite ${isBoxVisible ? "" : "hidden"} `}></div> */}
-            <div className={`shape${isBoxVisible ? "" : "hidden"}`}>
-              <div className="notification" >{counter}</div>
-
-              <Particles width={'100%'} height={"400px"}
+          <Particles  width={'100%'} height={"400px"}
                 params={
                   {
                     "particles": {
@@ -274,9 +278,29 @@ export class HomePage extends React.Component {
 
                 }
               />
-            </div>
+          <div className="wrapper" >
+         
+            <p o className={`${isBoxVisible ? "" : "stop-animation"}`}>
+              <span className={`${isBoxVisible ? "" : "stop-animation"}`}></span>   
+            </p>
+
+            <p  className={`${isBoxVisible ? "" : "stop-animation"}`}>
+              <span  className={`${isBoxVisible ? "" : "stop-animation"}`}>
+              </span>
+            </p> 
+            <div className="notification" >{counter}</div>
+          </div>
+
+
+            {/* style={{background:`linear-gradient(45deg, var(--primary) 0%, ${color} 100%)  `}} */}
+            {/* <div className={`shape shapeWhite ${isBoxVisible ? "" : "stop-animation"} `}></div> */}
+            {/* <div className={`shape${isBoxVisible ? "" : "hidden"}`}>
+              
+
+             
+            </div> */}
             
-            <div className="animationStatsContainer">
+            <div  className="animationStatsContainer">
               <div>
                 <span className="statsText">Animation status: </span><span>{isBoxVisible ? "Playing" : "Stoped"}</span>
               </div>

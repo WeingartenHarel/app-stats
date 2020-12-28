@@ -134,14 +134,14 @@ export class HomePage extends React.Component {
           HomePage Component
         </div>
 
-       <div className="actionList">
+       {actions && <div className="actionList">
           <h4>Action List</h4>
           <ul className="action-list clean-list">
             {
               actions.map((action, index) => <ActionPreview action={action} key={index} />)
             }
           </ul>
-        </div>
+        </div>}
 
         <nav>
           <button onClick={this.toggleMenu}><FontAwesomeIcon icon={faBars} /></button>

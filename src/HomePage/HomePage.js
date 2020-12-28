@@ -130,16 +130,13 @@ export class HomePage extends React.Component {
     return (
       <div className="HomePage">
 
-        {/* <div className="videoBG"><iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/DGQwd1_dpuc?controls=0" frameBorder="0" allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> </div> */}
-
-        {/* <div >
+        <div >
           HomePage Component
-        </div> */}
+        </div>
 
-        <div className="actionList">
+       <div className="actionList">
           <h4>Action List</h4>
           <ul className="action-list clean-list">
-            {/*  */}
             {
               actions.map((action, index) => <ActionPreview action={action} key={index} />)
             }
@@ -280,26 +277,18 @@ export class HomePage extends React.Component {
               />
           <div className="wrapper" >
          
-            <p o className={`${isBoxVisible ? "" : "stop-animation"}`}>
-              <span className={`${isBoxVisible ? "" : "stop-animation"}`}></span>   
+            <p className={`style ${isBoxVisible ? "style" : "stop-animation"}`}>
+              <span className={`style ${isBoxVisible ? "style" : "stop-animation"}`}></span>   
             </p>
 
-            <p  className={`${isBoxVisible ? "" : "stop-animation"}`}>
-              <span  className={`${isBoxVisible ? "" : "stop-animation"}`}>
+            <p className={`style ${isBoxVisible ? "style" : "stop-animation"}`}>
+              <span  className={`style ${isBoxVisible ? "style" : "stop-animation"}`}>
               </span>
             </p> 
             <div className="notification" >{counter}</div>
           </div>
 
-
-            {/* style={{background:`linear-gradient(45deg, var(--primary) 0%, ${color} 100%)  `}} */}
-            {/* <div className={`shape shapeWhite ${isBoxVisible ? "" : "stop-animation"} `}></div> */}
-            {/* <div className={`shape${isBoxVisible ? "" : "hidden"}`}>
-              
-
-             
-            </div> */}
-            
+   
             <div  className="animationStatsContainer">
               <div>
                 <span className="statsText">Animation status: </span><span>{isBoxVisible ? "Playing" : "Stoped"}</span>
